@@ -1,0 +1,214 @@
+/* ===== Employee Management System - style.css =====
+   Theme: lime green + near-black + white, bold outlined cards
+   with an offset shadow (inspired by the Positivus design).
+*/
+
+:root {
+  --lime: #b9ff66;
+  --dark: #191a23;
+  --gray: #f3f3f3;
+  --white: #ffffff;
+  --muted: #5d5f6e;
+  --danger: #e5484d;
+  --radius: 26px;
+  --shadow: 0 5px 0 var(--dark);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", Arial, Helvetica, sans-serif;
+  color: var(--dark);
+  line-height: 1.5;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 55%, #eaffc7 100%) fixed;
+  min-height: 100vh;
+}
+
+/* ---------- Header / navigation ---------- */
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 22px 20px 6px;
+}
+
+.brand {
+  font-weight: bold;
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand::before { content: "\2726"; font-size: 1.3rem; }
+
+nav { display: flex; flex-wrap: wrap; gap: 6px; }
+
+nav a {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: var(--dark);
+  text-decoration: none;
+}
+
+nav a:hover { text-decoration: underline; }
+
+nav a[aria-current="page"] {
+  background: var(--lime);
+  border-color: var(--dark);
+  font-weight: bold;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 26px 20px 70px;
+}
+
+h1, h2 {
+  margin: 0 0 22px;
+  display: inline-block;
+  background: var(--lime);
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 1.9rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--dark);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 26px;
+}
+
+/* ---------- Dashboard ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
+  margin: 6px 0 30px;
+}
+
+.stat {
+  border: 1px solid var(--dark);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  background: var(--gray);
+}
+
+.stat:nth-child(2) { background: var(--lime); }
+.stat:nth-child(3) { background: var(--dark); color: var(--white); }
+
+.stat .label { font-size: 0.95rem; opacity: 0.8; }
+.stat .value { font-size: 2rem; font-weight: bold; margin-top: 4px; }
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
+}
+
+.quick-links a {
+  display: block;
+  padding: 22px;
+  border: 1px solid var(--dark);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: var(--gray);
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.quick-links a:nth-child(1) { background: var(--lime); }
+.quick-links a:nth-child(3) { background: var(--dark); color: var(--white); }
+.quick-links a:hover { transform: translateY(-2px); }
+
+/* ---------- Forms ---------- */
+form { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+
+.field { display: flex; flex-direction: column; gap: 5px; flex: 1 1 190px; }
+.field label { font-size: 0.85rem; font-weight: bold; }
+
+input, select {
+  padding: 11px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--dark);
+  border-radius: 14px;
+  background: var(--white);
+  color: var(--dark);
+  width: 100%;
+}
+
+input:focus, select:focus, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--lime);
+  outline-offset: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--dark);
+  border-radius: 14px;
+  background: var(--dark);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.btn:hover { background: var(--lime); color: var(--dark); }
+.btn.danger { background: var(--white); color: var(--danger); border-color: var(--danger); }
+.btn.danger:hover { background: var(--danger); color: var(--white); }
+.btn.small { padding: 6px 14px; font-size: 0.85rem; }
+
+/* ---------- Messages ---------- */
+.msg { margin: 16px 0 0; padding: 0; border-radius: 12px; }
+.msg:empty { display: none; }
+.msg.ok { padding: 10px 14px; background: var(--lime); border: 1px solid var(--dark); }
+.msg.error { padding: 10px 14px; background: #ffd9d9; border: 1px solid var(--danger); color: #8a1c20; }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; }
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid var(--dark);
+}
+
+th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+td.empty { text-align: center; color: var(--muted); padding: 26px; }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.toolbar input { max-width: 300px; }
+.summary { color: var(--muted); }
+#total { background: var(--lime); padding: 4px 10px; border-radius: 8px; }
+
+@media (max-width: 600px) {
+  .topbar { padding: 16px 14px 4px; }
+  .container { padding: 20px 14px 50px; }
+  h1, h2 { font-size: 1.5rem; }
+}
