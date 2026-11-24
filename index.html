@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Employee Management System</div>
+  <nav id="nav">
+    <a href="#" data-page="home">Home</a>
+    <a href="#add" data-page="add">Add Employee</a>
+    <a href="#list" data-page="list">Employees</a>
+    <a href="#attendance" data-page="attendance">Attendance</a>
+    <a href="#salary" data-page="salary">Salary</a>
+  </nav>
+</header>
+
+<!-- The active page is placed here by script.js -->
+<main class="container" id="view"></main>
+
+<!-- ===== Dashboard page ===== -->
+<template id="tpl-home" data-title="Dashboard">
+    <h1>Dashboard</h1>
+    <div class="stats">
+      <div class="stat"><div class="label">Total employees</div><div class="value" id="statEmployees">0</div></div>
+      <div class="stat"><div class="label">Present today</div><div class="value" id="statPresent">0</div></div>
+      <div class="stat"><div class="label">Salary this month</div><div class="value" id="statSalary">Rs. 0</div></div>
+    </div>
+    <div class="quick-links">
+      <a href="#add">Add Employee</a>
+      <a href="#list">Employees List</a>
+      <a href="#attendance">Attendance</a>
+      <a href="#salary">Salary</a>
+    </div>
+</template>
+
+<!-- ===== Add Employee page ===== -->
+<template id="tpl-add" data-title="Add Employee">
+    <h2>Add Employee</h2>
+    <div class="card">
+      <form id="employeeForm">
+        <div class="field"><label for="name">Name</label><input type="text" id="name" placeholder="e.g. Asha Patel" required></div>
+        <div class="field"><label for="role">Role</label><input type="text" id="role" placeholder="e.g. Developer" required></div>
+        <div class="field"><label for="department">Department (optional)</label><input type="text" id="department" placeholder="e.g. IT"></div>
+        <button class="btn" type="submit">Add</button>
+      </form>
+      <p id="msg" class="msg" role="status"></p>
+    </div>
+</template>
+
+<!-- ===== Employees List page ===== -->
+<template id="tpl-list" data-title="Employees List">
+    <h2>Employees List</h2>
+    <div class="card">
+      <div class="toolbar">
+        <input type="search" id="search" placeholder="Search by name, role or department">
+        <span class="summary" id="count"></span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Role</th><th>Department</th><th>Action</th></tr></thead>
+          <tbody id="employeeBody"></tbody>
+        </table>
+      </div>
+    </div>
+</template>
+
+<!-- ===== Attendance page ===== -->
+<template id="tpl-attendance" data-title="Attendance">
+    <h2>Attendance</h2>
+    <div class="card">
+      <form id="attendanceForm">
+        <div class="field"><label for="employee">Employee</label><select id="employee"></select></div>
+        <div class="field"><label for="date">Date</label><input type="date" id="date"></div>
+        <div class="field"><label for="status">Status</label>
+          <select id="status"><option>Present</option><option>Absent</option></select></div>
+        <button class="btn" type="submit">Save</button>
+      </form>
+      <p id="msg" class="msg" role="status"></p>
+    </div>
+    <div class="card table-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Employee</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody id="attendanceBody"></tbody>
+      </table>
+    </div>
+</template>
+
+<!-- ===== Salary page ===== -->
+<template id="tpl-salary" data-title="Salary">
+    <h2>Salary</h2>
+    <div class="card">
+      <form id="salaryForm">
+        <div class="field"><label for="employee">Employee</label><select id="employee"></select></div>
+        <div class="field"><label for="month">Month</label><input type="month" id="month"></div>
+        <div class="field"><label for="amount">Amount (Rs.)</label><input type="number" id="amount" min="0" step="any" placeholder="e.g. 25000"></div>
+        <button class="btn" type="submit">Add</button>
+      </form>
+      <p id="msg" class="msg" role="status"></p>
+    </div>
+    <div class="card">
+      <div class="toolbar"><strong id="total"></strong></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Month</th><th>Employee</th><th>Amount</th><th>Action</th></tr></thead>
+          <tbody id="salaryBody"></tbody>
+        </table>
+      </div>
+    </div>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>
